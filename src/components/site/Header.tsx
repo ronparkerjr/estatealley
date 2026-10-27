@@ -95,6 +95,8 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <p className="eyebrow mt-8">Follow</p>
+            <SocialLinks className="mt-4" />
             <div className="mt-8 flex flex-col gap-3">
               <Button asChild size="lg">
                 <a href={SITE.mlsSearch} target="_blank" rel="noopener noreferrer">
@@ -108,7 +110,6 @@ export function Header() {
                 <a href={SITE.phoneHref}>Call {SITE.phone}</a>
               </Button>
               <a href={SITE.emailHref} className="mt-2 text-center text-sm text-muted-foreground">{SITE.email}</a>
-              <SocialLinks className="mt-6 self-center" />
             </div>
           </nav>
         </div>

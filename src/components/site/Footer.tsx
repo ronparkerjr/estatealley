@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/eag-logo.png.asset.json";
+import { Button } from "@/components/ui/button";
 import { NAV, SITE } from "@/lib/site";
 
 export function Footer() {
@@ -13,6 +14,11 @@ export function Footer() {
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-on-dark-muted">
             Real estate guidance for buyers and sellers across {SITE.serviceArea}.
           </p>
+          <Button asChild size="sm" variant="inverse" className="mt-7">
+            <a href={SITE.mlsSearch} target="_blank" rel="noopener noreferrer">
+              Search the MLS Listings
+            </a>
+          </Button>
         </div>
 
         <nav aria-label="Footer" className="md:col-span-3">

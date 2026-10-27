@@ -1,4 +1,6 @@
 // Content sourced from the current estatealley.com site (checked Oct 2026).
+import { SITE } from "./site";
+
 const wix = (id: string, crop: string, w = 900, h = 748) =>
   `https://static.wixstatic.com/media/${id}~mv2.jpg/v1/crop/${crop}/fill/w_${w},h_${h},al_c,q_85,enc_auto/${id}.jpg`;
 const wixFill = (file: string, w: number, h: number) =>

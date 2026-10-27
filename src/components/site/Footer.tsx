@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import logo from "@/assets/eag-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { NAV, SITE } from "@/lib/site";
+import { SocialLinks } from "./SocialLinks";
 
 export function Footer() {
   return (
@@ -19,6 +20,8 @@ export function Footer() {
               Search the MLS Listings
             </a>
           </Button>
+          <p className="eyebrow mt-10 !text-champagne">Follow</p>
+          <SocialLinks tone="dark" className="mt-4" />
         </div>
 
         <nav aria-label="Footer" className="md:col-span-3">

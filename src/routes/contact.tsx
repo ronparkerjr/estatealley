@@ -3,6 +3,7 @@ import { zodValidator, fallback } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { LeadForm, type LeadKind } from "@/components/site/LeadForm";
+import { SocialLinks } from "@/components/site/SocialLinks";
 import { SITE, pageMeta } from "@/lib/site";
 
 const FORMS: { k: LeadKind; l: string; h: string; p: string }[] = [
@@ -64,6 +65,8 @@ function Contact() {
                 <li><a href={SITE.emailHref} className="flex items-center gap-3"><Mail className="h-4 w-4" /><span className="link-underline">{SITE.email}</span></a></li>
               </ul>
               <a href={MAPS} target="_blank" rel="noopener noreferrer" className="mt-8 inline-block text-xs font-semibold uppercase tracking-[0.15em] link-underline">Get directions →</a>
+              <p className="eyebrow mt-8">Follow</p>
+              <SocialLinks className="mt-4" />
             </div>
           </address>
         </div>

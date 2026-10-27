@@ -94,7 +94,7 @@ function Home() {
 
       {/* 3. Pathways */}
       <section className="bg-ivory">
-        <div className="container-site grid gap-px bg-border py-px md:grid-cols-2">
+        <div className="container-site grid divide-y md:grid-cols-2 md:divide-x md:divide-y-0">
           {[
             { eyebrow: "Buyers", title: "Looking to buy?", items: buy, cta: "Explore Available Homes", to: "/listed-properties" as const },
             { eyebrow: "Sellers", title: "Thinking of selling?", items: sell, cta: "Get Your Free Home Valuation", to: "/contact" as const },

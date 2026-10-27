@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as JoinOurTeamRouteImport } from './routes/join-our-team'
+import { Route as ListedPropertiesRouteImport } from './routes/listed-properties'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as SoldPropertiesRouteImport } from './routes/sold-properties'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinOurTeamRoute = JoinOurTeamRouteImport.update({
+  id: '/join-our-team',
+  path: '/join-our-team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListedPropertiesRoute = ListedPropertiesRouteImport.update({
+  id: '/listed-properties',
+  path: '/listed-properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoldPropertiesRoute = SoldPropertiesRouteImport.update({
+  id: '/sold-properties',
+  path: '/sold-properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/join-our-team': typeof JoinOurTeamRoute
+  '/listed-properties': typeof ListedPropertiesRoute
+  '/reviews': typeof ReviewsRoute
+  '/sold-properties': typeof SoldPropertiesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/join-our-team': typeof JoinOurTeamRoute
+  '/listed-properties': typeof ListedPropertiesRoute
+  '/reviews': typeof ReviewsRoute
+  '/sold-properties': typeof SoldPropertiesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/join-our-team': typeof JoinOurTeamRoute
+  '/listed-properties': typeof ListedPropertiesRoute
+  '/reviews': typeof ReviewsRoute
+  '/sold-properties': typeof SoldPropertiesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/join-our-team'
+    | '/listed-properties'
+    | '/reviews'
+    | '/sold-properties'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/join-our-team'
+    | '/listed-properties'
+    | '/reviews'
+    | '/sold-properties'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/join-our-team'
+    | '/listed-properties'
+    | '/reviews'
+    | '/sold-properties'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  JoinOurTeamRoute: typeof JoinOurTeamRoute
+  ListedPropertiesRoute: typeof ListedPropertiesRoute
+  ReviewsRoute: typeof ReviewsRoute
+  SoldPropertiesRoute: typeof SoldPropertiesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join-our-team': {
+      id: '/join-our-team'
+      path: '/join-our-team'
+      fullPath: '/join-our-team'
+      preLoaderRoute: typeof JoinOurTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listed-properties': {
+      id: '/listed-properties'
+      path: '/listed-properties'
+      fullPath: '/listed-properties'
+      preLoaderRoute: typeof ListedPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sold-properties': {
+      id: '/sold-properties'
+      path: '/sold-properties'
+      fullPath: '/sold-properties'
+      preLoaderRoute: typeof SoldPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  JoinOurTeamRoute: JoinOurTeamRoute,
+  ListedPropertiesRoute: ListedPropertiesRoute,
+  ReviewsRoute: ReviewsRoute,
+  SoldPropertiesRoute: SoldPropertiesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

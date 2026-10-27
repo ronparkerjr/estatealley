@@ -14,11 +14,13 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FirstTimeHomebuyerRouteImport } from './routes/first-time-homebuyer'
 import { Route as JoinOurTeamRouteImport } from './routes/join-our-team'
 import { Route as ListedPropertiesRouteImport } from './routes/listed-properties'
 import { Route as MeettheteamRouteImport } from './routes/meettheteam'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as RecentlySoldPropertiesRouteImport } from './routes/recently-sold-properties'
+import { Route as RenovationsRouteImport } from './routes/renovations'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SoldPropertiesRouteImport } from './routes/sold-properties'
@@ -26,6 +28,7 @@ import { Route as WorkRouteImport } from './routes/work'
 import { Route as AreasIndexRouteImport } from './routes/areas.index'
 import { Route as AreasSlugRouteImport } from './routes/areas.$slug'
 import { Route as ListedPropertiesSlugRouteImport } from './routes/listed-properties_.$slug'
+import { Route as ResourcesFirstTimeHomebuyersRouteImport } from './routes/resources.first-time-homebuyers'
 import { Route as SoldPropertiesSlugRouteImport } from './routes/sold-properties_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +56,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FirstTimeHomebuyerRoute = FirstTimeHomebuyerRouteImport.update({
+  id: '/first-time-homebuyer',
+  path: '/first-time-homebuyer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JoinOurTeamRoute = JoinOurTeamRouteImport.update({
   id: '/join-our-team',
   path: '/join-our-team',
@@ -76,6 +84,11 @@ const PropertiesRoute = PropertiesRouteImport.update({
 const RecentlySoldPropertiesRoute = RecentlySoldPropertiesRouteImport.update({
   id: '/recently-sold-properties',
   path: '/recently-sold-properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RenovationsRoute = RenovationsRouteImport.update({
+  id: '/renovations',
+  path: '/renovations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReviewsRoute = ReviewsRouteImport.update({
@@ -113,6 +126,12 @@ const ListedPropertiesSlugRoute = ListedPropertiesSlugRouteImport.update({
   path: '/listed-properties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesFirstTimeHomebuyersRoute =
+  ResourcesFirstTimeHomebuyersRouteImport.update({
+    id: '/resources/first-time-homebuyers',
+    path: '/resources/first-time-homebuyers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const SoldPropertiesSlugRoute = SoldPropertiesSlugRouteImport.update({
   id: '/sold-properties_/$slug',
   path: '/sold-properties/$slug',
@@ -125,17 +144,20 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
+  '/first-time-homebuyer': typeof FirstTimeHomebuyerRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
   '/meettheteam': typeof MeettheteamRoute
   '/properties': typeof PropertiesRoute
   '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
+  '/renovations': typeof RenovationsRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
   '/work': typeof WorkRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
+  '/resources/first-time-homebuyers': typeof ResourcesFirstTimeHomebuyersRoute
   '/sold-properties/$slug': typeof SoldPropertiesSlugRoute
   '/areas/': typeof AreasIndexRoute
 }
@@ -145,17 +167,20 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
+  '/first-time-homebuyer': typeof FirstTimeHomebuyerRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
   '/meettheteam': typeof MeettheteamRoute
   '/properties': typeof PropertiesRoute
   '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
+  '/renovations': typeof RenovationsRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
   '/work': typeof WorkRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
+  '/resources/first-time-homebuyers': typeof ResourcesFirstTimeHomebuyersRoute
   '/sold-properties/$slug': typeof SoldPropertiesSlugRoute
   '/areas': typeof AreasIndexRoute
 }
@@ -166,17 +191,20 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
+  '/first-time-homebuyer': typeof FirstTimeHomebuyerRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
   '/meettheteam': typeof MeettheteamRoute
   '/properties': typeof PropertiesRoute
   '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
+  '/renovations': typeof RenovationsRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
   '/work': typeof WorkRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties_/$slug': typeof ListedPropertiesSlugRoute
+  '/resources/first-time-homebuyers': typeof ResourcesFirstTimeHomebuyersRoute
   '/sold-properties_/$slug': typeof SoldPropertiesSlugRoute
   '/areas/': typeof AreasIndexRoute
 }
@@ -188,17 +216,20 @@ export interface FileRouteTypes {
     | '/contact'
     | '/contact-us'
     | '/faq'
+    | '/first-time-homebuyer'
     | '/join-our-team'
     | '/listed-properties'
     | '/meettheteam'
     | '/properties'
     | '/recently-sold-properties'
+    | '/renovations'
     | '/reviews'
     | '/sitemap.xml'
     | '/sold-properties'
     | '/work'
     | '/areas/$slug'
     | '/listed-properties/$slug'
+    | '/resources/first-time-homebuyers'
     | '/sold-properties/$slug'
     | '/areas/'
   fileRoutesByTo: FileRoutesByTo
@@ -208,17 +239,20 @@ export interface FileRouteTypes {
     | '/contact'
     | '/contact-us'
     | '/faq'
+    | '/first-time-homebuyer'
     | '/join-our-team'
     | '/listed-properties'
     | '/meettheteam'
     | '/properties'
     | '/recently-sold-properties'
+    | '/renovations'
     | '/reviews'
     | '/sitemap.xml'
     | '/sold-properties'
     | '/work'
     | '/areas/$slug'
     | '/listed-properties/$slug'
+    | '/resources/first-time-homebuyers'
     | '/sold-properties/$slug'
     | '/areas'
   id:
@@ -228,17 +262,20 @@ export interface FileRouteTypes {
     | '/contact'
     | '/contact-us'
     | '/faq'
+    | '/first-time-homebuyer'
     | '/join-our-team'
     | '/listed-properties'
     | '/meettheteam'
     | '/properties'
     | '/recently-sold-properties'
+    | '/renovations'
     | '/reviews'
     | '/sitemap.xml'
     | '/sold-properties'
     | '/work'
     | '/areas/$slug'
     | '/listed-properties_/$slug'
+    | '/resources/first-time-homebuyers'
     | '/sold-properties_/$slug'
     | '/areas/'
   fileRoutesById: FileRoutesById
@@ -249,17 +286,20 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   ContactUsRoute: typeof ContactUsRoute
   FaqRoute: typeof FaqRoute
+  FirstTimeHomebuyerRoute: typeof FirstTimeHomebuyerRoute
   JoinOurTeamRoute: typeof JoinOurTeamRoute
   ListedPropertiesRoute: typeof ListedPropertiesRoute
   MeettheteamRoute: typeof MeettheteamRoute
   PropertiesRoute: typeof PropertiesRoute
   RecentlySoldPropertiesRoute: typeof RecentlySoldPropertiesRoute
+  RenovationsRoute: typeof RenovationsRoute
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SoldPropertiesRoute: typeof SoldPropertiesRoute
   WorkRoute: typeof WorkRoute
   AreasSlugRoute: typeof AreasSlugRoute
   ListedPropertiesSlugRoute: typeof ListedPropertiesSlugRoute
+  ResourcesFirstTimeHomebuyersRoute: typeof ResourcesFirstTimeHomebuyersRoute
   SoldPropertiesSlugRoute: typeof SoldPropertiesSlugRoute
   AreasIndexRoute: typeof AreasIndexRoute
 }
@@ -301,6 +341,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/first-time-homebuyer': {
+      id: '/first-time-homebuyer'
+      path: '/first-time-homebuyer'
+      fullPath: '/first-time-homebuyer'
+      preLoaderRoute: typeof FirstTimeHomebuyerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/join-our-team': {
       id: '/join-our-team'
       path: '/join-our-team'
@@ -334,6 +381,13 @@ declare module '@tanstack/react-router' {
       path: '/recently-sold-properties'
       fullPath: '/recently-sold-properties'
       preLoaderRoute: typeof RecentlySoldPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renovations': {
+      id: '/renovations'
+      path: '/renovations'
+      fullPath: '/renovations'
+      preLoaderRoute: typeof RenovationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reviews': {
@@ -385,6 +439,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListedPropertiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/first-time-homebuyers': {
+      id: '/resources/first-time-homebuyers'
+      path: '/resources/first-time-homebuyers'
+      fullPath: '/resources/first-time-homebuyers'
+      preLoaderRoute: typeof ResourcesFirstTimeHomebuyersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sold-properties_/$slug': {
       id: '/sold-properties_/$slug'
       path: '/sold-properties/$slug'
@@ -401,17 +462,20 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   ContactUsRoute: ContactUsRoute,
   FaqRoute: FaqRoute,
+  FirstTimeHomebuyerRoute: FirstTimeHomebuyerRoute,
   JoinOurTeamRoute: JoinOurTeamRoute,
   ListedPropertiesRoute: ListedPropertiesRoute,
   MeettheteamRoute: MeettheteamRoute,
   PropertiesRoute: PropertiesRoute,
   RecentlySoldPropertiesRoute: RecentlySoldPropertiesRoute,
+  RenovationsRoute: RenovationsRoute,
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SoldPropertiesRoute: SoldPropertiesRoute,
   WorkRoute: WorkRoute,
   AreasSlugRoute: AreasSlugRoute,
   ListedPropertiesSlugRoute: ListedPropertiesSlugRoute,
+  ResourcesFirstTimeHomebuyersRoute: ResourcesFirstTimeHomebuyersRoute,
   SoldPropertiesSlugRoute: SoldPropertiesSlugRoute,
   AreasIndexRoute: AreasIndexRoute,
 }

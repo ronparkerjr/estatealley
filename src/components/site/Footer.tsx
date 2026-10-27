@@ -10,7 +10,7 @@ export function Footer() {
       <div className="container-site grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
           <div className="inline-block bg-background px-4 py-3">
-            <img src={logo.url} alt="Estate Alley Group Real Estate" width={322} height={185} className="h-14 w-auto" loading="lazy" />
+            <img src={logo.url} alt="Estate Alley Group Real Estate" width={166} height={95} className="h-14 w-auto" loading="lazy" />
           </div>
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-on-dark-muted">
             Real estate guidance for buyers and sellers across {SITE.serviceArea}.

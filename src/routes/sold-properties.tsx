@@ -91,7 +91,7 @@ function Sold() {
         <div className="container-site flex flex-wrap items-center justify-between gap-8 py-16 md:py-20">
           <h2 className="text-3xl md:text-4xl">What could your home sell for?</h2>
           <div className="flex flex-wrap gap-3">
-            <Button asChild size="lg" variant="inverse"><Link to="/contact">Get a Free Valuation</Link></Button>
+            <Button asChild size="lg" variant="inverse"><Link to="/contact" search={{ form: "valuation" }}>Get a Free Valuation</Link></Button>
             <Button asChild size="lg" variant="outlineInverse"><Link to="/listed-properties">Find a Home Like This</Link></Button>
           </div>
         </div>

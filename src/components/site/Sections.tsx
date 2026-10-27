@@ -46,7 +46,7 @@ export function CtaBand() {
             A complimentary, no-pressure valuation based on current local sales — prepared by people who know your neighborhood.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button asChild size="lg" variant="inverse"><Link to="/contact">Request a Valuation</Link></Button>
+            <Button asChild size="lg" variant="inverse"><Link to="/contact" search={{ form: "valuation" }}>Request a Free Home Valuation</Link></Button>
             <Button asChild size="lg" variant="outlineInverse"><a href={SITE.phoneHref}>Call {SITE.phone}</a></Button>
           </div>
         </div>

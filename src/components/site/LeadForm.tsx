@@ -80,7 +80,7 @@ export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; default
     }
     setErrors({});
     setStatus("sending");
-    const d = parsed.data as Record<string, string | undefined>;
+    const d = parsed.data as Record<string, string | undefined> & { firstName: string; lastName: string; email: string; smsConsent?: string };
     const payload: Record<string, string> = {
       _subject: `${cfg.subject}: ${d.firstName} ${d.lastName}`, _template: "table", _captcha: "false", _replyto: d.email!,
     };

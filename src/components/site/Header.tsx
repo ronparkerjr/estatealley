@@ -28,13 +28,13 @@ export function Header() {
         <Logo className={`w-auto transition-all duration-300 ${scrolled ? "h-12" : "h-16"}`} />
 
         <nav aria-label="Primary" className="hidden xl:block">
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-1">
             {NAV.filter((n) => n.to !== "/").map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="link-underline py-1 text-[0.8rem] font-medium tracking-wide text-foreground/80 hover:text-foreground"
-                  activeProps={{ className: "text-foreground !bg-[length:100%_1px]" }}
+                  className="rounded-full border border-transparent px-3.5 py-1.5 text-[0.7rem] uppercase tracking-[0.16em] transition-colors hover:border-foreground/30 font-medium tracking-wide text-foreground/80 hover:text-foreground"
+                  activeProps={{ className: "!border-foreground/60 text-foreground" }}
                 >
                   {item.label}
                 </Link>

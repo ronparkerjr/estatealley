@@ -19,7 +19,6 @@ export const SITE = {
 export const NAV = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/listed-properties", label: "Listed Properties" },
   { to: "/sold-properties", label: "Sold Properties" },
   { to: "/reviews", label: "Reviews" },
   { to: "/faq", label: "FAQ" },

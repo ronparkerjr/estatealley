@@ -158,8 +158,14 @@ export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; default
       </>}
       {kind === "showing" && <Input n="when" label="Preferred days/times" optional />}
       <Select n="contactMethod" label="Preferred contact method" opts={["Email", "Phone", "Text"]} />
-      <label className="text-sm font-medium sm:col-span-2">{kind === "question" ? "Your question" : "Message"}{!msgRequired && <span className="font-normal text-muted-foreground"> (optional)</span>}
-        <textarea {...a("message")} rows={4} className={field} /><Err n="message" /></label>
+      {kind === "firstTimeBuyer" && <>
+        <Input n="buyingTimeline" label="How soon are you looking to buy?" optional />
+        <Input n="desiredLocation" label="Do you have a desired location or neighborhood?" wide optional />
+        <Input n="propertyType" label="What kind of property are you interested in?" ph="Single family, condo, etc." wide optional />
+        <Select n="buyingProcessInfo" label="As a first-time homebuyer, are you seeking information on the buying process? (optional)" opts={["Yes", "No", "Not sure"]} wide />
+      </>}
+      <label className="text-sm font-medium sm:col-span-2">{kind === "firstTimeBuyer" ? "Any additional concerns or a brief message about what you are seeking as a first-time homebuyer" : kind === "question" ? "Your question" : "Message"}{msgRequired ? " *" : <span className="font-normal text-muted-foreground"> (optional)</span>}
+        <textarea {...a("message")} rows={4} maxLength={2000} className={field} /><Err n="message" /></label>
       <label className="flex items-start gap-3 text-xs leading-relaxed text-muted-foreground sm:col-span-2">
         <input type="checkbox" name="smsConsent" value="yes" className="mt-0.5 h-4 w-4" />
         <span>Optional: I agree to receive text messages from {SITE.name} about my inquiry. Message and data rates may apply. Reply STOP to opt out. Consent is not required to work with us.</span>

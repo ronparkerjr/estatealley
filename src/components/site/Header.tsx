@@ -34,7 +34,7 @@ export function Header() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="rounded-full border border-transparent px-3.5 py-1.5 text-[0.7rem] uppercase tracking-[0.16em] transition-colors hover:border-foreground/30 font-medium tracking-wide text-foreground/80 hover:text-foreground"
+                    className="whitespace-nowrap rounded-full border border-transparent px-2.5 py-1.5 text-[0.7rem] uppercase tracking-[0.1em] transition-colors hover:border-foreground/30 font-medium text-foreground/80 hover:text-foreground 2xl:px-3.5 2xl:tracking-[0.16em]"
                     activeProps={{ className: "!border-foreground/60 text-foreground" }}
                   >
                     {item.label}
@@ -44,14 +44,21 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="hidden items-center gap-4 xl:flex">
-            <a href={SITE.phoneHref} className="flex items-center gap-2 text-sm font-medium">
+          <div className="hidden items-center gap-3 xl:flex 2xl:gap-4">
+            <a
+              href={SITE.phoneHref}
+              aria-label={`Call ${SITE.phone}`}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-foreground/20 transition-colors hover:border-foreground/60 2xl:hidden"
+            >
+              <Phone className="h-4 w-4" aria-hidden />
+            </a>
+            <a href={SITE.phoneHref} className="hidden items-center gap-2 whitespace-nowrap text-sm font-medium 2xl:flex">
               <Phone className="h-4 w-4" aria-hidden /> {SITE.phone}
             </a>
-            <Button asChild size="sm" variant="outline">
+            <Button asChild size="sm" variant="outline" className="whitespace-nowrap px-4 2xl:px-5">
               <Link to="/contact" search={{ form: "valuation" }}>Free Home Valuation</Link>
             </Button>
-            <Button asChild size="sm">
+            <Button asChild size="sm" className="whitespace-nowrap px-4 2xl:px-5">
               <a href={SITE.mlsSearch} target="_blank" rel="noopener noreferrer">
                 Search the MLS Listings
               </a>
@@ -72,7 +79,7 @@ export function Header() {
 
       {open && (
         <div className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-background xl:hidden animate-in fade-in">
-          <nav aria-label="Mobile" className="container-site flex flex-col py-8">
+          <nav aria-label="Mobile" className="container-site flex flex-col py-8 pb-28">
             {NAV.map((item) => (
               <Link
                 key={item.to}

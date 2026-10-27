@@ -25,7 +25,7 @@ export function Header() {
       className={`sticky top-0 z-50 bg-background/95 backdrop-blur transition-shadow duration-300 ${scrolled ? "border-b shadow-soft" : ""}`}
     >
       <div className="container-site flex h-20 items-center justify-between gap-6">
-        <Logo className={`w-auto transition-all duration-300 ${scrolled ? "h-10" : "h-12"}`} />
+        <Logo className={`w-auto transition-all duration-300 ${scrolled ? "h-12" : "h-16"}`} />
 
         <nav aria-label="Primary" className="hidden xl:block">
           <ul className="flex items-center gap-7">

@@ -130,9 +130,9 @@ function RootComponent() {
       </main>
       <Footer />
       <div className="h-14 md:hidden" aria-hidden="true" />
-      <nav aria-label="Quick contact" className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t bg-background/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
-        <a href={`tel:${SITE.phone.replace(/[^0-9]/g, "")}`} className="flex h-14 items-center justify-center gap-2 text-[0.75rem] font-semibold uppercase tracking-[0.12em]">Call {SITE.phone}</a>
-        <Link to="/contact" search={{ form: "valuation" }} className="flex h-14 items-center justify-center bg-primary text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-primary-foreground">Home Value</Link>
+      <nav aria-label="Quick contact" className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-champagne md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+        <a href={`tel:${SITE.phone.replace(/[^0-9]/g, "")}`} className="flex h-14 items-center justify-center gap-1.5 bg-primary text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-primary-foreground"><Phone className="h-4 w-4 shrink-0" /> Call {SITE.phone}</a>
+        <Link to="/contact" search={{ form: "valuation" }} className="flex h-14 items-center justify-center border-l border-border/60 bg-background text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-foreground">Home Value</Link>
       </nav>
     </QueryClientProvider>
   );

@@ -22,6 +22,8 @@ export function Footer() {
               <li key={n.to}><Link to={n.to} className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">{n.label}</Link></li>
             ))}
             <li><Link to="/areas" className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">Communities We Serve</Link></li>
+            <li><Link to="/resources/first-time-homebuyers" className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">First-Time Homebuyers</Link></li>
+            <li><Link to="/renovations" className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">Renovations</Link></li>
           </ul>
         </nav>
 

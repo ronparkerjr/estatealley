@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
+import { SocialLinks } from "./SocialLinks";
 import { Button } from "@/components/ui/button";
 import { NAV, SITE } from "@/lib/site";
 
@@ -46,6 +47,7 @@ export function Header() {
           </nav>
 
           <div className="hidden items-center gap-3 xl:flex min-[1440px]:gap-4">
+            <SocialLinks compact className="hidden min-[1540px]:flex" />
             <a
               href={SITE.phoneHref}
               aria-label={`Call ${SITE.phone}`}
@@ -93,6 +95,8 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <p className="eyebrow mt-8">Follow</p>
+            <SocialLinks className="mt-4" />
             <div className="mt-8 flex flex-col gap-3">
               <Button asChild size="lg">
                 <a href={SITE.mlsSearch} target="_blank" rel="noopener noreferrer">

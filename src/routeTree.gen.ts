@@ -16,6 +16,8 @@ import { Route as JoinOurTeamRouteImport } from './routes/join-our-team'
 import { Route as ListedPropertiesRouteImport } from './routes/listed-properties'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SoldPropertiesRouteImport } from './routes/sold-properties'
+import { Route as ListedPropertiesSlugRouteImport } from './routes/listed-properties_.$slug'
+import { Route as SoldPropertiesSlugRouteImport } from './routes/sold-properties_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +54,16 @@ const SoldPropertiesRoute = SoldPropertiesRouteImport.update({
   path: '/sold-properties',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ListedPropertiesSlugRoute = ListedPropertiesSlugRouteImport.update({
+  id: '/listed-properties_/$slug',
+  path: '/listed-properties/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoldPropertiesSlugRoute = SoldPropertiesSlugRouteImport.update({
+  id: '/sold-properties_/$slug',
+  path: '/sold-properties/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +73,8 @@ export interface FileRoutesByFullPath {
   '/listed-properties': typeof ListedPropertiesRoute
   '/reviews': typeof ReviewsRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
+  '/sold-properties/$slug': typeof SoldPropertiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +84,8 @@ export interface FileRoutesByTo {
   '/listed-properties': typeof ListedPropertiesRoute
   '/reviews': typeof ReviewsRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
+  '/sold-properties/$slug': typeof SoldPropertiesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +96,8 @@ export interface FileRoutesById {
   '/listed-properties': typeof ListedPropertiesRoute
   '/reviews': typeof ReviewsRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/listed-properties_/$slug': typeof ListedPropertiesSlugRoute
+  '/sold-properties_/$slug': typeof SoldPropertiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +109,8 @@ export interface FileRouteTypes {
     | '/listed-properties'
     | '/reviews'
     | '/sold-properties'
+    | '/listed-properties/$slug'
+    | '/sold-properties/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +120,8 @@ export interface FileRouteTypes {
     | '/listed-properties'
     | '/reviews'
     | '/sold-properties'
+    | '/listed-properties/$slug'
+    | '/sold-properties/$slug'
   id:
     | '__root__'
     | '/'
@@ -109,6 +131,8 @@ export interface FileRouteTypes {
     | '/listed-properties'
     | '/reviews'
     | '/sold-properties'
+    | '/listed-properties_/$slug'
+    | '/sold-properties_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +143,8 @@ export interface RootRouteChildren {
   ListedPropertiesRoute: typeof ListedPropertiesRoute
   ReviewsRoute: typeof ReviewsRoute
   SoldPropertiesRoute: typeof SoldPropertiesRoute
+  ListedPropertiesSlugRoute: typeof ListedPropertiesSlugRoute
+  SoldPropertiesSlugRoute: typeof SoldPropertiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +198,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SoldPropertiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/listed-properties_/$slug': {
+      id: '/listed-properties_/$slug'
+      path: '/listed-properties/$slug'
+      fullPath: '/listed-properties/$slug'
+      preLoaderRoute: typeof ListedPropertiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sold-properties_/$slug': {
+      id: '/sold-properties_/$slug'
+      path: '/sold-properties/$slug'
+      fullPath: '/sold-properties/$slug'
+      preLoaderRoute: typeof SoldPropertiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +223,8 @@ const rootRouteChildren: RootRouteChildren = {
   ListedPropertiesRoute: ListedPropertiesRoute,
   ReviewsRoute: ReviewsRoute,
   SoldPropertiesRoute: SoldPropertiesRoute,
+  ListedPropertiesSlugRoute: ListedPropertiesSlugRoute,
+  SoldPropertiesSlugRoute: SoldPropertiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

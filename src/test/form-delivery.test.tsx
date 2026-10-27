@@ -33,7 +33,9 @@ describe("Every webform sends to Heather through FormSubmit", () => {
     }
     fireEvent.submit(form);
     await waitFor(() => expect(send).toHaveBeenCalledOnce());
-    const [url, options] = send.mock.calls[0];
+    const call = send.mock.calls[0];
+    if (!call) throw new Error("Missing delivery request");
+    const [url, options] = call;
     expect(url).toBe("https://formsubmit.co/ajax/heather@estatealley.com");
     const payload = JSON.parse(options.body);
     expect(payload._replyto).toBe("form-test@example.com");

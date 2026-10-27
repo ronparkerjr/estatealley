@@ -18,12 +18,14 @@ import { Route as FirstTimeHomebuyerRouteImport } from './routes/first-time-home
 import { Route as JoinOurTeamRouteImport } from './routes/join-our-team'
 import { Route as ListedPropertiesRouteImport } from './routes/listed-properties'
 import { Route as MeettheteamRouteImport } from './routes/meettheteam'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as RecentlySoldPropertiesRouteImport } from './routes/recently-sold-properties'
 import { Route as RenovationsRouteImport } from './routes/renovations'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SoldPropertiesRouteImport } from './routes/sold-properties'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AreasIndexRouteImport } from './routes/areas.index'
 import { Route as AreasSlugRouteImport } from './routes/areas.$slug'
@@ -76,6 +78,11 @@ const MeettheteamRoute = MeettheteamRouteImport.update({
   path: '/meettheteam',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PropertiesRoute = PropertiesRouteImport.update({
   id: '/properties',
   path: '/properties',
@@ -104,6 +111,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const SoldPropertiesRoute = SoldPropertiesRouteImport.update({
   id: '/sold-properties',
   path: '/sold-properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkRoute = WorkRouteImport.update({
@@ -148,12 +160,14 @@ export interface FileRoutesByFullPath {
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
   '/meettheteam': typeof MeettheteamRoute
+  '/privacy': typeof PrivacyRoute
   '/properties': typeof PropertiesRoute
   '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
   '/renovations': typeof RenovationsRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/terms': typeof TermsRoute
   '/work': typeof WorkRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
@@ -171,12 +185,14 @@ export interface FileRoutesByTo {
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
   '/meettheteam': typeof MeettheteamRoute
+  '/privacy': typeof PrivacyRoute
   '/properties': typeof PropertiesRoute
   '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
   '/renovations': typeof RenovationsRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/terms': typeof TermsRoute
   '/work': typeof WorkRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
@@ -195,12 +211,14 @@ export interface FileRoutesById {
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
   '/meettheteam': typeof MeettheteamRoute
+  '/privacy': typeof PrivacyRoute
   '/properties': typeof PropertiesRoute
   '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
   '/renovations': typeof RenovationsRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/terms': typeof TermsRoute
   '/work': typeof WorkRoute
   '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties_/$slug': typeof ListedPropertiesSlugRoute
@@ -220,12 +238,14 @@ export interface FileRouteTypes {
     | '/join-our-team'
     | '/listed-properties'
     | '/meettheteam'
+    | '/privacy'
     | '/properties'
     | '/recently-sold-properties'
     | '/renovations'
     | '/reviews'
     | '/sitemap.xml'
     | '/sold-properties'
+    | '/terms'
     | '/work'
     | '/areas/$slug'
     | '/listed-properties/$slug'
@@ -243,12 +263,14 @@ export interface FileRouteTypes {
     | '/join-our-team'
     | '/listed-properties'
     | '/meettheteam'
+    | '/privacy'
     | '/properties'
     | '/recently-sold-properties'
     | '/renovations'
     | '/reviews'
     | '/sitemap.xml'
     | '/sold-properties'
+    | '/terms'
     | '/work'
     | '/areas/$slug'
     | '/listed-properties/$slug'
@@ -266,12 +288,14 @@ export interface FileRouteTypes {
     | '/join-our-team'
     | '/listed-properties'
     | '/meettheteam'
+    | '/privacy'
     | '/properties'
     | '/recently-sold-properties'
     | '/renovations'
     | '/reviews'
     | '/sitemap.xml'
     | '/sold-properties'
+    | '/terms'
     | '/work'
     | '/areas/$slug'
     | '/listed-properties_/$slug'
@@ -290,12 +314,14 @@ export interface RootRouteChildren {
   JoinOurTeamRoute: typeof JoinOurTeamRoute
   ListedPropertiesRoute: typeof ListedPropertiesRoute
   MeettheteamRoute: typeof MeettheteamRoute
+  PrivacyRoute: typeof PrivacyRoute
   PropertiesRoute: typeof PropertiesRoute
   RecentlySoldPropertiesRoute: typeof RecentlySoldPropertiesRoute
   RenovationsRoute: typeof RenovationsRoute
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SoldPropertiesRoute: typeof SoldPropertiesRoute
+  TermsRoute: typeof TermsRoute
   WorkRoute: typeof WorkRoute
   AreasSlugRoute: typeof AreasSlugRoute
   ListedPropertiesSlugRoute: typeof ListedPropertiesSlugRoute
@@ -369,6 +395,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MeettheteamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/properties': {
       id: '/properties'
       path: '/properties'
@@ -409,6 +442,13 @@ declare module '@tanstack/react-router' {
       path: '/sold-properties'
       fullPath: '/sold-properties'
       preLoaderRoute: typeof SoldPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work': {
@@ -466,12 +506,14 @@ const rootRouteChildren: RootRouteChildren = {
   JoinOurTeamRoute: JoinOurTeamRoute,
   ListedPropertiesRoute: ListedPropertiesRoute,
   MeettheteamRoute: MeettheteamRoute,
+  PrivacyRoute: PrivacyRoute,
   PropertiesRoute: PropertiesRoute,
   RecentlySoldPropertiesRoute: RecentlySoldPropertiesRoute,
   RenovationsRoute: RenovationsRoute,
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SoldPropertiesRoute: SoldPropertiesRoute,
+  TermsRoute: TermsRoute,
   WorkRoute: WorkRoute,
   AreasSlugRoute: AreasSlugRoute,
   ListedPropertiesSlugRoute: ListedPropertiesSlugRoute,

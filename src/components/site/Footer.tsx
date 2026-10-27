@@ -43,7 +43,11 @@ export function Footer() {
       <div className="border-t border-on-dark/10">
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-on-dark-muted md:flex-row md:justify-between">
           <p>© {new Date().getFullYear()} {SITE.name}. Affiliated with {SITE.brokerage}. Each office independently owned and operated.</p>
-          <p>Equal Housing Opportunity</p>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link to="/privacy" className="link-underline hover:text-on-dark">Privacy Policy</Link>
+            <Link to="/terms" className="link-underline hover:text-on-dark">Terms of Use</Link>
+            <span>Equal Housing Opportunity</span>
+          </p>
         </div>
       </div>
     </footer>

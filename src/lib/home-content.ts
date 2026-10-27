@@ -8,7 +8,7 @@ export const HERO_IMAGE = wix("ddf363_0abad36e68214eb18479999327276335", "x_147,
 export const TEAM_GROUP_IMAGE = wixFill("ddf363_b76958e512434dc5977676a7a8a1b154~mv2.jpg", 1600, 908);
 export const RENO_BEFORE = wixFill("ddf363_94af86bd5aea4369b5d7b975cebfd0b6~mv2.jpg", 900, 582);
 export const RENO_AFTER = wixFill("ddf363_728241261ba341d39eca3f1f3fd5a8b1~mv2.webp", 900, 582);
-export const YOUTUBE_URL = "https://www.youtube.com/@heatherandjohnalleywithest3684";
+export const YOUTUBE_URL = SITE.youtube;
 
 /** Historical sales shown on the existing site. Not current listings. */
 export const SOLD = [

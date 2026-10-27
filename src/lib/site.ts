@@ -11,6 +11,8 @@ export const SITE = {
   email: "heather@estatealley.com",
   emailHref: "mailto:heather@estatealley.com",
   mlsSearch: "https://estatealley.kw.com/",
+  facebook: "https://www.facebook.com/EstateAlley",
+  youtube: "https://www.youtube.com/@heatherandjohnalleywithest3684",
   serviceArea: "Cincinnati, Dayton and surrounding areas",
   // Communities the team serves (no offices implied). Office is in West Chester only.
   areasServed: ["Greater Cincinnati", "West Chester", "Mason", "Liberty Township", "Lebanon", "Loveland", "Maineville", "Fairfield", "Blue Ash", "Montgomery", "Dayton"],

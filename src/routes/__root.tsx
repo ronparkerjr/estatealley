@@ -73,6 +73,7 @@ const jsonLd = {
         addressCountry: "US",
       },
       areaServed: SITE.areasServed.map((a) => ({ "@type": "Place", name: `${a}, OH` })),
+      sameAs: [SITE.facebook, SITE.youtube],
     },
     { "@type": "WebSite", "@id": SITE.url + "/#website", url: SITE.url + "/", name: SITE.name, publisher: { "@id": SITE.url + "/#business" } },
   ],

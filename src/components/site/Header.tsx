@@ -30,7 +30,7 @@ export function Header() {
 
           <nav aria-label="Primary" className="hidden xl:block">
             <ul className="flex items-center gap-1">
-              {NAV.filter((n) => n.to !== "/").map((item) => (
+              {NAV.map((item) => (
                 <li key={item.to}>
                   <Link
                     to={item.to}

@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Business details (name, address, phone, email, nav) live only in src/lib/site.ts; import from there so NAP stays consistent.
+- Shared layout (Header/Footer) is mounted in src/routes/__root.tsx; every page uses pageMeta() for unique head metadata.

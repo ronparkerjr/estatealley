@@ -17,7 +17,7 @@ export const Route = createFileRoute("/contact")({
   validateSearch: zodValidator(z.object({ form: fallback(z.string(), "contact").default("contact") })),
   head: () => ({
     meta: pageMeta("Contact Us", "Contact Estate Alley Group at 9277 Centre Pointe Dr, Suite 200, West Chester, OH 45069. Call 513-305-0102 or request a free home valuation."),
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: SITE.url + "/contact" }],
   }),
   component: Contact,
 });

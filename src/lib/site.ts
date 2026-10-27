@@ -1,5 +1,6 @@
 export const SITE = {
   name: "Estate Alley Group",
+  url: "https://www.estatealley.com",
   brokerage: "Keller Williams Advisors",
   street: "9277 Centre Pointe Dr, Suite 200",
   city: "West Chester",
@@ -11,6 +12,8 @@ export const SITE = {
   emailHref: "mailto:heather@estatealley.com",
   mlsSearch: "https://estatealley.kw.com/",
   serviceArea: "Cincinnati, Dayton and surrounding areas",
+  // Communities the team serves (no offices implied). Office is in West Chester only.
+  areasServed: ["Greater Cincinnati", "West Chester", "Mason", "Liberty Township", "Lebanon", "Loveland", "Maineville", "Fairfield", "Blue Ash", "Montgomery", "Dayton"],
 } as const;
 
 export const NAV = [
@@ -23,7 +26,7 @@ export const NAV = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-export function pageMeta(title: string, description: string) {
+export function pageMeta(title: string, description: string, path?: string) {
   const full = `${title} | Estate Alley Group`;
   return [
     { title: full },
@@ -32,5 +35,14 @@ export function pageMeta(title: string, description: string) {
     { property: "og:description", content: description },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
+    ...(path ? [{ property: "og:url", content: SITE.url + path }] : []),
   ];
+}
+
+export function breadcrumbs(items: [string, string][]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: SITE.url + path })),
+  };
 }

@@ -49,20 +49,32 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
-  name: SITE.name,
-  telephone: SITE.phone,
-  email: SITE.email,
-  parentOrganization: { "@type": "Organization", name: SITE.brokerage },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: SITE.street,
-    addressLocality: SITE.city,
-    addressRegion: SITE.region,
-    postalCode: SITE.zip,
-    addressCountry: "US",
-  },
-  areaServed: ["Cincinnati, OH", "Dayton, OH", "West Chester, OH"],
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": SITE.url + "/#business",
+      name: SITE.name,
+      url: SITE.url + "/",
+      logo: SITE.url + "/favicon.png",
+      telephone: "+1-513-305-0102",
+      email: SITE.email,
+      parentOrganization: { "@type": "Organization", name: SITE.brokerage },
+      founder: [
+        { "@type": "Person", name: "Heather Alley" },
+        { "@type": "Person", name: "John Alley" },
+      ],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SITE.street,
+        addressLocality: SITE.city,
+        addressRegion: SITE.region,
+        postalCode: SITE.zip,
+        addressCountry: "US",
+      },
+      areaServed: SITE.areasServed.map((a) => ({ "@type": "Place", name: `${a}, OH` })),
+    },
+    { "@type": "WebSite", "@id": SITE.url + "/#website", url: SITE.url + "/", name: SITE.name, publisher: { "@id": SITE.url + "/#business" } },
+  ],
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({

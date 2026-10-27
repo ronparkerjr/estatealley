@@ -8,7 +8,7 @@ import { SITE, pageMeta } from "@/lib/site";
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: pageMeta("Client Reviews", "Read genuine reviews from buyers and sellers who worked with Estate Alley Group, Keller Williams Advisors, across Greater Cincinnati and Dayton."),
-    links: [{ rel: "canonical", href: "/reviews" }],
+    links: [{ rel: "canonical", href: SITE.url + "/reviews" }],
   }),
   component: Reviews,
 });

@@ -12,10 +12,19 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as JoinOurTeamRouteImport } from './routes/join-our-team'
 import { Route as ListedPropertiesRouteImport } from './routes/listed-properties'
+import { Route as MeettheteamRouteImport } from './routes/meettheteam'
+import { Route as PropertiesRouteImport } from './routes/properties'
+import { Route as RecentlySoldPropertiesRouteImport } from './routes/recently-sold-properties'
 import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SoldPropertiesRouteImport } from './routes/sold-properties'
+import { Route as WorkRouteImport } from './routes/work'
+import { Route as AreasIndexRouteImport } from './routes/areas.index'
+import { Route as AreasSlugRouteImport } from './routes/areas.$slug'
 import { Route as ListedPropertiesSlugRouteImport } from './routes/listed-properties_.$slug'
 import { Route as SoldPropertiesSlugRouteImport } from './routes/sold-properties_.$slug'
 
@@ -34,6 +43,16 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const JoinOurTeamRoute = JoinOurTeamRouteImport.update({
   id: '/join-our-team',
   path: '/join-our-team',
@@ -44,14 +63,49 @@ const ListedPropertiesRoute = ListedPropertiesRouteImport.update({
   path: '/listed-properties',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MeettheteamRoute = MeettheteamRouteImport.update({
+  id: '/meettheteam',
+  path: '/meettheteam',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesRoute = PropertiesRouteImport.update({
+  id: '/properties',
+  path: '/properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecentlySoldPropertiesRoute = RecentlySoldPropertiesRouteImport.update({
+  id: '/recently-sold-properties',
+  path: '/recently-sold-properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SoldPropertiesRoute = SoldPropertiesRouteImport.update({
   id: '/sold-properties',
   path: '/sold-properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AreasIndexRoute = AreasIndexRouteImport.update({
+  id: '/areas/',
+  path: '/areas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AreasSlugRoute = AreasSlugRouteImport.update({
+  id: '/areas/$slug',
+  path: '/areas/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ListedPropertiesSlugRoute = ListedPropertiesSlugRouteImport.update({
@@ -69,35 +123,62 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
+  '/meettheteam': typeof MeettheteamRoute
+  '/properties': typeof PropertiesRoute
+  '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
   '/reviews': typeof ReviewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/work': typeof WorkRoute
+  '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
   '/sold-properties/$slug': typeof SoldPropertiesSlugRoute
+  '/areas/': typeof AreasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
+  '/meettheteam': typeof MeettheteamRoute
+  '/properties': typeof PropertiesRoute
+  '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
   '/reviews': typeof ReviewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/work': typeof WorkRoute
+  '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties/$slug': typeof ListedPropertiesSlugRoute
   '/sold-properties/$slug': typeof SoldPropertiesSlugRoute
+  '/areas': typeof AreasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
+  '/faq': typeof FaqRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
+  '/meettheteam': typeof MeettheteamRoute
+  '/properties': typeof PropertiesRoute
+  '/recently-sold-properties': typeof RecentlySoldPropertiesRoute
   '/reviews': typeof ReviewsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sold-properties': typeof SoldPropertiesRoute
+  '/work': typeof WorkRoute
+  '/areas/$slug': typeof AreasSlugRoute
   '/listed-properties_/$slug': typeof ListedPropertiesSlugRoute
   '/sold-properties_/$slug': typeof SoldPropertiesSlugRoute
+  '/areas/': typeof AreasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -105,46 +186,82 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/contact-us'
+    | '/faq'
     | '/join-our-team'
     | '/listed-properties'
+    | '/meettheteam'
+    | '/properties'
+    | '/recently-sold-properties'
     | '/reviews'
+    | '/sitemap.xml'
     | '/sold-properties'
+    | '/work'
+    | '/areas/$slug'
     | '/listed-properties/$slug'
     | '/sold-properties/$slug'
+    | '/areas/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
+    | '/contact-us'
+    | '/faq'
     | '/join-our-team'
     | '/listed-properties'
+    | '/meettheteam'
+    | '/properties'
+    | '/recently-sold-properties'
     | '/reviews'
+    | '/sitemap.xml'
     | '/sold-properties'
+    | '/work'
+    | '/areas/$slug'
     | '/listed-properties/$slug'
     | '/sold-properties/$slug'
+    | '/areas'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/contact-us'
+    | '/faq'
     | '/join-our-team'
     | '/listed-properties'
+    | '/meettheteam'
+    | '/properties'
+    | '/recently-sold-properties'
     | '/reviews'
+    | '/sitemap.xml'
     | '/sold-properties'
+    | '/work'
+    | '/areas/$slug'
     | '/listed-properties_/$slug'
     | '/sold-properties_/$slug'
+    | '/areas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  ContactUsRoute: typeof ContactUsRoute
+  FaqRoute: typeof FaqRoute
   JoinOurTeamRoute: typeof JoinOurTeamRoute
   ListedPropertiesRoute: typeof ListedPropertiesRoute
+  MeettheteamRoute: typeof MeettheteamRoute
+  PropertiesRoute: typeof PropertiesRoute
+  RecentlySoldPropertiesRoute: typeof RecentlySoldPropertiesRoute
   ReviewsRoute: typeof ReviewsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SoldPropertiesRoute: typeof SoldPropertiesRoute
+  WorkRoute: typeof WorkRoute
+  AreasSlugRoute: typeof AreasSlugRoute
   ListedPropertiesSlugRoute: typeof ListedPropertiesSlugRoute
   SoldPropertiesSlugRoute: typeof SoldPropertiesSlugRoute
+  AreasIndexRoute: typeof AreasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -170,6 +287,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/join-our-team': {
       id: '/join-our-team'
       path: '/join-our-team'
@@ -184,6 +315,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListedPropertiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/meettheteam': {
+      id: '/meettheteam'
+      path: '/meettheteam'
+      fullPath: '/meettheteam'
+      preLoaderRoute: typeof MeettheteamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties': {
+      id: '/properties'
+      path: '/properties'
+      fullPath: '/properties'
+      preLoaderRoute: typeof PropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recently-sold-properties': {
+      id: '/recently-sold-properties'
+      path: '/recently-sold-properties'
+      fullPath: '/recently-sold-properties'
+      preLoaderRoute: typeof RecentlySoldPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
@@ -191,11 +343,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sold-properties': {
       id: '/sold-properties'
       path: '/sold-properties'
       fullPath: '/sold-properties'
       preLoaderRoute: typeof SoldPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/areas/': {
+      id: '/areas/'
+      path: '/areas'
+      fullPath: '/areas/'
+      preLoaderRoute: typeof AreasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/areas/$slug': {
+      id: '/areas/$slug'
+      path: '/areas/$slug'
+      fullPath: '/areas/$slug'
+      preLoaderRoute: typeof AreasSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/listed-properties_/$slug': {
@@ -219,12 +399,21 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  ContactUsRoute: ContactUsRoute,
+  FaqRoute: FaqRoute,
   JoinOurTeamRoute: JoinOurTeamRoute,
   ListedPropertiesRoute: ListedPropertiesRoute,
+  MeettheteamRoute: MeettheteamRoute,
+  PropertiesRoute: PropertiesRoute,
+  RecentlySoldPropertiesRoute: RecentlySoldPropertiesRoute,
   ReviewsRoute: ReviewsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SoldPropertiesRoute: SoldPropertiesRoute,
+  WorkRoute: WorkRoute,
+  AreasSlugRoute: AreasSlugRoute,
   ListedPropertiesSlugRoute: ListedPropertiesSlugRoute,
   SoldPropertiesSlugRoute: SoldPropertiesSlugRoute,
+  AreasIndexRoute: AreasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

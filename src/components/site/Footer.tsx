@@ -21,6 +21,8 @@ export function Footer() {
             {NAV.map((n) => (
               <li key={n.to}><Link to={n.to} className="link-underline text-on-dark-muted hover:text-on-dark">{n.label}</Link></li>
             ))}
+            <li><Link to="/areas" className="link-underline text-on-dark-muted hover:text-on-dark">Communities We Serve</Link></li>
+            <li><Link to="/faq" className="link-underline text-on-dark-muted hover:text-on-dark">Buyer &amp; Seller FAQ</Link></li>
           </ul>
         </nav>
 

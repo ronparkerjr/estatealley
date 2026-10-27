@@ -16,6 +16,22 @@ export const Route = createFileRoute("/about")({
       { property: "og:image", content: TEAM_GROUP_IMAGE },
       { name: "twitter:image", content: TEAM_GROUP_IMAGE },
     ],
+    links: [{ rel: "canonical", href: SITE.url + "/about" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": [...LEADS, ...AGENTS].map((m) => ({
+          "@type": "Person",
+          name: m.name,
+          jobTitle: m.role === "Team Lead" ? "Realtor, Team Lead" : "Realtor",
+          email: m.email,
+          telephone: m.phone,
+          image: m.img,
+          worksFor: { "@id": SITE.url + "/#business" },
+        })),
+      }),
+    }],
   }),
   component: About,
 });

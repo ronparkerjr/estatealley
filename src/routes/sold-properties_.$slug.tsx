@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PropertyDetail } from "@/components/site/PropertyDetail";
 import { Button } from "@/components/ui/button";
 import { PORTFOLIO, KIND_LABEL, sized, usd } from "@/lib/properties";
-import { pageMeta } from "@/lib/site";
+import { SITE, breadcrumbs, pageMeta } from "@/lib/site";
 
 export const Route = createFileRoute("/sold-properties_/$slug")({
   loader: ({ params }) => {
@@ -24,7 +24,8 @@ export const Route = createFileRoute("/sold-properties_/$slug")({
         { property: "og:image", content: img },
         { name: "twitter:image", content: img },
       ],
-      links: [{ rel: "canonical", href: `/sold-properties/${params.slug}` }],
+      links: [{ rel: "canonical", href: `${SITE.url}/sold-properties/${params.slug}` }],
+      scripts: [{ type: "application/ld+json", children: JSON.stringify(breadcrumbs([["Home", "/"], ["Sold Properties", "/sold-properties"], [p.title, `/sold-properties/${params.slug}`]])) }],
     };
   },
   component: () => {

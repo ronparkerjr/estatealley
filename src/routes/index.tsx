@@ -59,7 +59,7 @@ function Home() {
               </div>
               <div className="mt-10 animate-fade-up">
                 <div className="flex flex-wrap gap-3">
-                  <Button asChild size="lg"><Link to="/listed-properties">Find Your Home <ArrowRight /></Link></Button>
+                  <Button asChild size="lg" className="lg:whitespace-normal"><Link to="/listed-properties">Find Your Home (Search the MLS Listings) <ArrowRight /></Link></Button>
                   <Button asChild size="lg" variant="outline"><Link to="/contact" search={{ form: "valuation" }}>What's My Home Worth?</Link></Button>
                 </div>
                 <Link to="/contact" search={{ form: "buyer" }} className="link-underline mt-6 inline-block text-sm font-medium">

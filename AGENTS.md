@@ -16,3 +16,4 @@
 - SITE.url in src/lib/site.ts is the single preferred domain; canonicals, og:url, sitemap and JSON-LD all build from it.
 - /sitemap.xml is generated in src/routes/sitemap[.]xml.ts; add new public static pages to its STATIC list.
 - Old Wix URLs are 301-redirected by tiny route files using beforeLoad redirect; keep them.
+- The standalone first-time buyer form reuses LeadForm; while awaiting launch, keep its route unlinked, noindex, and out of the sitemap to prevent premature discovery.

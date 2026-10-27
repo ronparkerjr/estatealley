@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 const ENDPOINT = `https://formsubmit.co/ajax/${SITE.email}`;
 
-export type LeadKind = "contact" | "valuation" | "buyer" | "showing" | "question";
+export type LeadKind = "contact" | "valuation" | "buyer" | "showing" | "question" | "firstTimeBuyer";
 
 const phone = z.string().trim().regex(/^[\d\s()+.-]{7,20}$/, "Please enter a valid phone number");
 const base = {
@@ -19,6 +19,16 @@ const base = {
 };
 
 const CONFIG: Record<LeadKind, { subject: string; cta: string; extra: z.ZodRawShape }> = {
+  firstTimeBuyer: {
+    subject: "First-time homebuyer consultation request", cta: "Submit",
+    extra: {
+      buyingTimeline: z.string().trim().max(200).optional(),
+      desiredLocation: z.string().trim().max(200).optional(),
+      propertyType: z.string().trim().max(200).optional(),
+      buyingProcessInfo: z.enum(["Yes", "No", "Not sure"]).optional(),
+      message: z.string().trim().min(1, "Please share your concerns or a brief message").max(2000),
+    },
+  },
   contact: {
     subject: "Website inquiry", cta: "Send My Message",
     extra: {
@@ -59,8 +69,14 @@ const LABELS: Record<string, string> = {
   firstName: "First name", lastName: "Last name", email: "Email", phone: "Phone", contactMethod: "Preferred contact",
   interest: "Interested in", address: "Property address", timeline: "Timeline", areas: "Areas of interest", budget: "Budget",
   property: "Property", when: "Preferred days/times", message: "Message", smsConsent: "SMS consent",
+  buyingTimeline: "How soon are you looking to buy?", desiredLocation: "Desired location or neighborhood",
+  propertyType: "Property type", buyingProcessInfo: "Seeking information on the buying process?",
 };
 type Status = "idle" | "sending" | "success" | "error";
+
+export function leadSchema(kind: LeadKind) {
+  return z.object({ ...base, ...CONFIG[kind].extra });
+}
 
 export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; defaultValues?: Record<string, string> }) {
   const cfg = CONFIG[kind];
@@ -73,7 +89,7 @@ export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; default
     const fd = new FormData(form);
     if (fd.get("_honey")) return;
     const raw = Object.fromEntries([...fd].filter(([k, v]) => k !== "_honey" && v !== ""));
-    const parsed = z.object({ ...base, ...cfg.extra }).safeParse(raw);
+    const parsed = leadSchema(kind).safeParse(raw);
     if (!parsed.success) {
       setErrors(Object.fromEntries(parsed.error.issues.map((i) => [String(i.path[0]), i.message])));
       return;
@@ -82,7 +98,7 @@ export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; default
     setStatus("sending");
     const d = parsed.data as Record<string, string | undefined> & { firstName: string; lastName: string; email: string; smsConsent?: string };
     const payload: Record<string, string> = {
-      _subject: `${cfg.subject}: ${d.firstName} ${d.lastName}`, _template: "table", _captcha: "false", _replyto: d.email!,
+      _subject: `${cfg.subject}: ${d.firstName} ${d.lastName}`, _template: "table", _captcha: "false", _replyto: d.email,
     };
     for (const [k, v] of Object.entries(d)) payload[LABELS[k] ?? k] = v ?? "—";
     payload["SMS consent"] = d.smsConsent ? "Yes" : "No";
@@ -120,9 +136,9 @@ export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; default
   );
   const Input = ({ n, label, type = "text", wide, optional, ac, ph }: { n: string; label: string; type?: string; wide?: boolean; optional?: boolean; ac?: string; ph?: string }) => (
     <label className={`text-sm font-medium ${wide ? "sm:col-span-2" : ""}`}>{label}{optional && <span className="font-normal text-muted-foreground"> (optional)</span>}
-      <input {...a(n)} type={type} autoComplete={ac} placeholder={ph} className={field} /><Err n={n} /></label>
+      <input {...a(n)} type={type} autoComplete={ac} placeholder={ph} maxLength={n === "email" ? 255 : n === "phone" ? 20 : n === "firstName" || n === "lastName" ? 60 : 200} className={field} /><Err n={n} /></label>
   );
-  const msgRequired = kind === "contact" || kind === "question";
+  const msgRequired = kind === "contact" || kind === "question" || kind === "firstTimeBuyer";
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-5 border bg-background p-6 sm:grid-cols-2 md:p-10">
@@ -142,8 +158,14 @@ export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; default
       </>}
       {kind === "showing" && <Input n="when" label="Preferred days/times" optional />}
       <Select n="contactMethod" label="Preferred contact method" opts={["Email", "Phone", "Text"]} />
-      <label className="text-sm font-medium sm:col-span-2">{kind === "question" ? "Your question" : "Message"}{!msgRequired && <span className="font-normal text-muted-foreground"> (optional)</span>}
-        <textarea {...a("message")} rows={4} className={field} /><Err n="message" /></label>
+      {kind === "firstTimeBuyer" && <>
+        <Input n="buyingTimeline" label="How soon are you looking to buy?" optional />
+        <Input n="desiredLocation" label="Do you have a desired location or neighborhood?" wide optional />
+        <Input n="propertyType" label="What kind of property are you interested in?" ph="Single family, condo, etc." wide optional />
+        <Select n="buyingProcessInfo" label="As a first-time homebuyer, are you seeking information on the buying process? (optional)" opts={["Yes", "No", "Not sure"]} wide />
+      </>}
+      <label className="text-sm font-medium sm:col-span-2">{kind === "firstTimeBuyer" ? "Any additional concerns or a brief message about what you are seeking as a first-time homebuyer" : kind === "question" ? "Your question" : "Message"}{msgRequired ? " *" : <span className="font-normal text-muted-foreground"> (optional)</span>}
+        <textarea {...a("message")} rows={4} maxLength={2000} className={field} /><Err n="message" /></label>
       <label className="flex items-start gap-3 text-xs leading-relaxed text-muted-foreground sm:col-span-2">
         <input type="checkbox" name="smsConsent" value="yes" className="mt-0.5 h-4 w-4" />
         <span>Optional: I agree to receive text messages from {SITE.name} about my inquiry. Message and data rates may apply. Reply STOP to opt out. Consent is not required to work with us.</span>

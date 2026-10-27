@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FirstTimeBuyerFormRouteImport } from './routes/first-time-buyer-form'
 import { Route as FirstTimeHomebuyerRouteImport } from './routes/first-time-homebuyer'
 import { Route as JoinOurTeamRouteImport } from './routes/join-our-team'
 import { Route as ListedPropertiesRouteImport } from './routes/listed-properties'
@@ -56,6 +57,11 @@ const ContactUsRoute = ContactUsRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FirstTimeBuyerFormRoute = FirstTimeBuyerFormRouteImport.update({
+  id: '/first-time-buyer-form',
+  path: '/first-time-buyer-form',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FirstTimeHomebuyerRoute = FirstTimeHomebuyerRouteImport.update({
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
+  '/first-time-buyer-form': typeof FirstTimeBuyerFormRoute
   '/first-time-homebuyer': typeof FirstTimeHomebuyerRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
@@ -181,6 +188,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
+  '/first-time-buyer-form': typeof FirstTimeBuyerFormRoute
   '/first-time-homebuyer': typeof FirstTimeHomebuyerRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
@@ -207,6 +215,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/contact-us': typeof ContactUsRoute
   '/faq': typeof FaqRoute
+  '/first-time-buyer-form': typeof FirstTimeBuyerFormRoute
   '/first-time-homebuyer': typeof FirstTimeHomebuyerRoute
   '/join-our-team': typeof JoinOurTeamRoute
   '/listed-properties': typeof ListedPropertiesRoute
@@ -234,6 +243,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/contact-us'
     | '/faq'
+    | '/first-time-buyer-form'
     | '/first-time-homebuyer'
     | '/join-our-team'
     | '/listed-properties'
@@ -259,6 +269,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/contact-us'
     | '/faq'
+    | '/first-time-buyer-form'
     | '/first-time-homebuyer'
     | '/join-our-team'
     | '/listed-properties'
@@ -284,6 +295,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/contact-us'
     | '/faq'
+    | '/first-time-buyer-form'
     | '/first-time-homebuyer'
     | '/join-our-team'
     | '/listed-properties'
@@ -310,6 +322,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   ContactUsRoute: typeof ContactUsRoute
   FaqRoute: typeof FaqRoute
+  FirstTimeBuyerFormRoute: typeof FirstTimeBuyerFormRoute
   FirstTimeHomebuyerRoute: typeof FirstTimeHomebuyerRoute
   JoinOurTeamRoute: typeof JoinOurTeamRoute
   ListedPropertiesRoute: typeof ListedPropertiesRoute
@@ -365,6 +378,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/first-time-buyer-form': {
+      id: '/first-time-buyer-form'
+      path: '/first-time-buyer-form'
+      fullPath: '/first-time-buyer-form'
+      preLoaderRoute: typeof FirstTimeBuyerFormRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/first-time-homebuyer': {
@@ -502,6 +522,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   ContactUsRoute: ContactUsRoute,
   FaqRoute: FaqRoute,
+  FirstTimeBuyerFormRoute: FirstTimeBuyerFormRoute,
   FirstTimeHomebuyerRoute: FirstTimeHomebuyerRoute,
   JoinOurTeamRoute: JoinOurTeamRoute,
   ListedPropertiesRoute: ListedPropertiesRoute,

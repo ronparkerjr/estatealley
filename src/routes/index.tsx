@@ -62,7 +62,7 @@ function Home() {
                   <Button asChild size="lg" className="lg:whitespace-normal"><Link to="/listed-properties">Find Your Home (Search the MLS Listings) <ArrowRight /></Link></Button>
                   <Button asChild size="lg" variant="outline"><Link to="/contact" search={{ form: "valuation" }}>What's My Home Worth?</Link></Button>
                 </div>
-                <Link to="/contact" search={{ form: "buyer" }} className="mt-6 inline-block rounded-sm border border-foreground/25 px-5 py-3 text-sm font-medium transition-colors duration-300 hover:border-foreground">
+                <Link to="/contact" search={{ form: "buyer" }} className="mt-6 inline-block rounded-sm border border-foreground bg-transparent px-5 py-3 text-sm font-medium text-foreground transition-colors duration-300 hover:bg-foreground hover:text-background">
                   Or schedule a free consultation →
                 </Link>
               </div>

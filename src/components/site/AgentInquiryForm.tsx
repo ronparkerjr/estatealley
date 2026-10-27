@@ -2,9 +2,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
-
-// Delivered to Heather via FormSubmit (free email relay, no backend required).
-const ENDPOINT = `https://formsubmit.co/ajax/${SITE.email}`;
+import { sendFormSubmission } from "@/lib/form-submit";
 
 const schema = z.object({
   firstName: z.string().trim().min(1, "Please enter your first name").max(60),
@@ -27,7 +25,8 @@ export function AgentInquiryForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     if (fd.get("_honey")) return; // bot
     const parsed = schema.safeParse(Object.fromEntries(fd));
     if (!parsed.success) {
@@ -38,10 +37,7 @@ export function AgentInquiryForm() {
     setStatus({ kind: "sending" });
     const d = parsed.data;
     try {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
+      await sendFormSubmission({
           _subject: `Agent inquiry: ${d.firstName} ${d.lastName}`,
           _template: "table",
           _captcha: "false",
@@ -54,15 +50,9 @@ export function AgentInquiryForm() {
           "Current brokerage": d.brokerage || "—",
           "Preferred contact": d.contactMethod,
           Message: d.message,
-        }),
       });
-      const json = await res.json().catch(() => ({}));
-      if (res.ok && (json.success === true || json.success === "true")) {
-        setStatus({ kind: "success" });
-        e.currentTarget?.reset();
-      } else {
-        throw new Error(json.message || "Delivery failed");
-      }
+      setStatus({ kind: "success" });
+      form.reset();
     } catch {
       setStatus({ kind: "error", msg: `We couldn't send your inquiry right now. Please email ${SITE.email} or call ${SITE.phone}.` });
     }

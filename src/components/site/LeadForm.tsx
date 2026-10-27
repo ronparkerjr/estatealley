@@ -2,8 +2,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
-
-const ENDPOINT = `https://formsubmit.co/ajax/${SITE.email}`;
+import { sendFormSubmission } from "@/lib/form-submit";
 
 export type LeadKind = "contact" | "valuation" | "buyer" | "showing" | "question" | "firstTimeBuyer";
 
@@ -103,13 +102,7 @@ export function LeadForm({ kind, defaultValues = {} }: { kind: LeadKind; default
     for (const [k, v] of Object.entries(d)) payload[LABELS[k] ?? k] = v ?? "—";
     payload["SMS consent"] = d.smsConsent ? "Yes" : "No";
     try {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || !(json.success === true || json.success === "true")) throw new Error();
+      await sendFormSubmission(payload);
       setStatus("success");
       form.reset();
     } catch {

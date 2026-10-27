@@ -2,8 +2,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
-
-const ENDPOINT = `https://formsubmit.co/ajax/${SITE.email}`;
+import { sendFormSubmission } from "@/lib/form-submit";
 
 const schema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -34,16 +33,10 @@ export function PropertyInquiryForm({ property, defaultRequest }: { property: st
     setStatus("sending");
     const d = parsed.data;
     try {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
+      await sendFormSubmission({
           _subject: `${d.request}: ${property}`, _template: "table", _captcha: "false", _replyto: d.email,
           Property: property, Request: d.request, Name: d.name, Email: d.email, Phone: d.phone, Message: d.message || "—",
-        }),
       });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || !(json.success === true || json.success === "true")) throw new Error();
       setStatus("success");
       form.reset();
     } catch {

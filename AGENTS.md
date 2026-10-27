@@ -12,7 +12,7 @@
 ## Project rules
 - Business details (name, address, phone, email, nav) live only in src/lib/site.ts; import from there so NAP stays consistent.
 - Shared layout (Header/Footer) is mounted in src/routes/__root.tsx; every page uses pageMeta() for unique head metadata.
-- Forms deliver via FormSubmit AJAX (no backend, per brand rule against unnecessary integrations); success shown only on a confirmed success response.
+- All forms call the shared src/lib/form-submit.ts delivery helper using SITE.email; centralizing FormSubmit AJAX prevents recipient drift and shows success only on a confirmed success response.
 - SITE.url in src/lib/site.ts is the single preferred domain; canonicals, og:url, sitemap and JSON-LD all build from it.
 - /sitemap.xml is generated in src/routes/sitemap[.]xml.ts; add new public static pages to its STATIC list.
 - Old Wix URLs are 301-redirected by tiny route files using beforeLoad redirect; keep them.

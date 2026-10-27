@@ -11,7 +11,7 @@ import { SITE, pageMeta } from "@/lib/site";
 export const Route = createFileRoute("/listed-properties")({
   head: () => ({
     meta: pageMeta("Homes for Sale", "Explore homes with Estate Alley Group at Keller Williams Advisors. Search current listings across Greater Cincinnati, West Chester, Mason and Dayton."),
-    links: [{ rel: "canonical", href: "/listed-properties" }],
+    links: [{ rel: "canonical", href: SITE.url + "/listed-properties" }],
   }),
   component: Listed,
 });

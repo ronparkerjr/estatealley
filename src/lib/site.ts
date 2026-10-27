@@ -1,5 +1,6 @@
 export const SITE = {
   name: "Estate Alley Group",
+  url: "https://www.estatealley.com",
   brokerage: "Keller Williams Advisors",
   street: "9277 Centre Pointe Dr, Suite 200",
   city: "West Chester",
@@ -23,7 +24,7 @@ export const NAV = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-export function pageMeta(title: string, description: string) {
+export function pageMeta(title: string, description: string, path?: string) {
   const full = `${title} | Estate Alley Group`;
   return [
     { title: full },
@@ -32,5 +33,6 @@ export function pageMeta(title: string, description: string) {
     { property: "og:description", content: description },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
+    ...(path ? [{ property: "og:url", content: SITE.url + path }] : []),
   ];
 }

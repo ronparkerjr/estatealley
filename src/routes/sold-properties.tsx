@@ -7,12 +7,12 @@ import { ComplianceNote } from "@/components/site/ComplianceNote";
 import { usePropertyFilters } from "@/components/site/PropertyFilters";
 import { BUYER, PORTFOLIO, SOLD } from "@/lib/properties";
 import { RENO_AFTER, RENO_BEFORE, YOUTUBE_URL } from "@/lib/home-content";
-import { pageMeta } from "@/lib/site";
+import { pageMeta , SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/sold-properties")({
   head: () => ({
     meta: pageMeta("Sold Homes & Track Record", "Explore homes Estate Alley Group has sold for sellers and helped buyers purchase across Greater Cincinnati and Dayton, plus our renovation projects."),
-    links: [{ rel: "canonical", href: "/sold-properties" }],
+    links: [{ rel: "canonical", href: SITE.url + "/sold-properties" }],
   }),
   component: Sold,
 });

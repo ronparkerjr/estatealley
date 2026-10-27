@@ -56,9 +56,6 @@ function Home() {
             </div>
             <div className="relative lg:col-span-7">
               <img src={hero} alt="Brick and stone home at dusk in a wooded Cincinnati neighborhood" width={1920} height={1088} className="aspect-[4/3] h-full w-full object-cover lg:aspect-auto" fetchPriority="high" />
-              <p className="absolute right-5 top-5 hidden border-l border-on-dark/60 pl-3 text-[0.65rem] font-semibold uppercase leading-relaxed tracking-[0.24em] text-on-dark md:block">
-                Local<br />Trusted<br />Personal
-              </p>
             </div>
           </div>
 

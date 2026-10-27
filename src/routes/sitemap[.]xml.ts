@@ -3,7 +3,7 @@ import { AREAS } from "@/lib/areas";
 import { LISTINGS, PORTFOLIO } from "@/lib/properties";
 import { SITE } from "@/lib/site";
 
-const STATIC = ["/", "/about", "/listed-properties", "/sold-properties", "/reviews", "/join-our-team", "/contact", "/faq", "/areas"];
+const STATIC = ["/", "/about", "/listed-properties", "/sold-properties", "/reviews", "/join-our-team", "/contact", "/faq", "/areas", "/renovations", "/resources/first-time-homebuyers"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {

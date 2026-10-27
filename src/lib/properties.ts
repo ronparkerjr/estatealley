@@ -11,10 +11,10 @@ export type Property = {
   title: string;
   price: number;
   beds: number;
-  baths?: number;
-  sqft?: number;
+  baths?: number | undefined;
+  sqft?: number | undefined;
   type: string;
-  location?: string;
+  location?: string | undefined;
   img: string;
   description?: string;
   features?: string[];

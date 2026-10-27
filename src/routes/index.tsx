@@ -49,8 +49,8 @@ function Home() {
           <div className="mt-8 grid gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="flex flex-col justify-between lg:col-span-5">
               <div>
-                <h1 className="text-[3.2rem] uppercase leading-[0.92] tracking-[-0.02em] sm:text-7xl xl:text-[6rem] animate-fade-up">
-                  Exceptional homes.<br />Exceptional service.
+                <h1 className="text-[2.6rem] uppercase leading-[0.95] tracking-[-0.02em] sm:text-6xl xl:text-[4.6rem] animate-fade-up">
+                  Exceptional<br />homes.<br />Exceptional<br />service.
                 </h1>
                 <p className="mt-8 max-w-md leading-relaxed text-muted-foreground animate-fade-up">
                   Your trusted real estate team serving Greater Cincinnati, West Chester, Mason, Liberty Township, Dayton and surrounding communities.

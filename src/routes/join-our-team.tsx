@@ -15,6 +15,7 @@ export const Route = createFileRoute("/join-our-team")({
       { property: "og:image", content: TEAM_GROUP_IMAGE },
       { name: "twitter:image", content: TEAM_GROUP_IMAGE },
     ],
+    links: [{ rel: "canonical", href: SITE.url + "/join-our-team" }],
   }),
   component: Join,
 });

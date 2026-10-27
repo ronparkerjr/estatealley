@@ -12,6 +12,8 @@ export const SITE = {
   emailHref: "mailto:heather@estatealley.com",
   mlsSearch: "https://estatealley.kw.com/",
   serviceArea: "Cincinnati, Dayton and surrounding areas",
+  // Communities the team serves (no offices implied). Office is in West Chester only.
+  areasServed: ["Greater Cincinnati", "West Chester", "Mason", "Liberty Township", "Lebanon", "Loveland", "Maineville", "Fairfield", "Blue Ash", "Montgomery", "Dayton"],
 } as const;
 
 export const NAV = [
@@ -35,4 +37,12 @@ export function pageMeta(title: string, description: string, path?: string) {
     { name: "twitter:card", content: "summary_large_image" },
     ...(path ? [{ property: "og:url", content: SITE.url + path }] : []),
   ];
+}
+
+export function breadcrumbs(items: [string, string][]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: SITE.url + path })),
+  };
 }

@@ -48,7 +48,7 @@ export function Header() {
             <Phone className="h-4 w-4" aria-hidden /> {SITE.phone}
           </a>
           <Button asChild size="sm">
-            <Link to="/contact">Free Home Valuation</Link>
+            <Link to="/contact" search={{ form: "valuation" }}>Free Home Valuation</Link>
           </Button>
         </div>
 
@@ -80,7 +80,7 @@ export function Header() {
             ))}
             <div className="mt-8 flex flex-col gap-3">
               <Button asChild size="lg">
-                <Link to="/contact" onClick={() => setOpen(false)}>Free Home Valuation</Link>
+                <Link to="/contact" search={{ form: "valuation" }} onClick={() => setOpen(false)}>Free Home Valuation</Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <a href={SITE.phoneHref}>Call {SITE.phone}</a>

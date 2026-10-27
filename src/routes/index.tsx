@@ -59,9 +59,9 @@ function Home() {
               <div className="mt-10 animate-fade-up">
                 <div className="flex flex-wrap gap-3">
                   <Button asChild size="lg"><Link to="/listed-properties">Find Your Home <ArrowRight /></Link></Button>
-                  <Button asChild size="lg" variant="outline"><Link to="/contact">What's My Home Worth?</Link></Button>
+                  <Button asChild size="lg" variant="outline"><Link to="/contact" search={{ form: "valuation" }}>What's My Home Worth?</Link></Button>
                 </div>
-                <Link to="/contact" className="link-underline mt-6 inline-block text-sm font-medium">
+                <Link to="/contact" search={{ form: "buyer" }} className="link-underline mt-6 inline-block text-sm font-medium">
                   Or schedule a free consultation →
                 </Link>
               </div>
@@ -235,8 +235,8 @@ function Home() {
         <div className="container-site py-20 text-center md:py-28">
           <h2 className="mx-auto max-w-3xl text-5xl uppercase leading-[0.95] md:text-7xl">Your next chapter starts here.</h2>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" variant="inverse"><Link to="/contact">Schedule a Consultation</Link></Button>
-            <Button asChild size="lg" variant="outlineInverse"><Link to="/contact">Get a Home Valuation</Link></Button>
+            <Button asChild size="lg" variant="inverse"><Link to="/contact" search={{ form: "buyer" }}>Schedule a Buyer Consultation</Link></Button>
+            <Button asChild size="lg" variant="outlineInverse"><Link to="/contact" search={{ form: "valuation" }}>Request a Free Home Valuation</Link></Button>
             <Button asChild size="lg" variant="outlineInverse"><a href={SITE.phoneHref}><Phone /> Call {SITE.phone}</a></Button>
           </div>
         </div>

@@ -168,7 +168,7 @@ function About() {
             <h2 className="text-3xl md:text-4xl">Let's talk about your real estate goals.</h2>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" variant="inverse"><Link to="/contact">Let's Talk About Your Real Estate Goals</Link></Button>
-              <Button asChild size="lg" variant="outlineInverse"><a href={SITE.phoneHref}>Call {SITE.phone}</a></Button>
+              <Button asChild size="lg" variant="outlineInverse"><Link to="/contact" search={{ form: "question" }}>Ask a Real Estate Question</Link></Button>
             </div>
           </div>
         </div>

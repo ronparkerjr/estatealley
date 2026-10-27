@@ -68,7 +68,7 @@ export function PropertyDetail({ p, related }: { p: Property; related: Property[
                 ) : (
                   <Button asChild size="lg"><a href="#inquire">Find a Home Like This</a></Button>
                 )}
-                <Button asChild size="lg" variant="outline"><Link to="/contact">What Could Your Home Sell For?</Link></Button>
+                <Button asChild size="lg" variant="outline"><Link to="/contact" search={{ form: "valuation" }}>What Could Your Home Sell For?</Link></Button>
               </div>
             </div>
           </div>

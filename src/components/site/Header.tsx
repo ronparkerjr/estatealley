@@ -44,12 +44,17 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="hidden items-center gap-5 xl:flex">
+          <div className="hidden items-center gap-4 xl:flex">
             <a href={SITE.phoneHref} className="flex items-center gap-2 text-sm font-medium">
               <Phone className="h-4 w-4" aria-hidden /> {SITE.phone}
             </a>
-            <Button asChild size="sm">
+            <Button asChild size="sm" variant="outline">
               <Link to="/contact" search={{ form: "valuation" }}>Free Home Valuation</Link>
+            </Button>
+            <Button asChild size="sm">
+              <a href={SITE.mlsSearch} target="_blank" rel="noopener noreferrer">
+                Search the MLS Listings
+              </a>
             </Button>
           </div>
 
@@ -82,6 +87,11 @@ export function Header() {
             ))}
             <div className="mt-8 flex flex-col gap-3">
               <Button asChild size="lg">
+                <a href={SITE.mlsSearch} target="_blank" rel="noopener noreferrer">
+                  Search the MLS Listings
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
                 <Link to="/contact" search={{ form: "valuation" }} onClick={() => setOpen(false)}>Free Home Valuation</Link>
               </Button>
               <Button asChild size="lg" variant="outline">

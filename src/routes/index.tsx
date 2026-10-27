@@ -100,7 +100,7 @@ function Home() {
             { eyebrow: "Buyers", title: "Looking to buy?", items: buy, cta: "Explore Available Homes", to: "/listed-properties" as const },
             { eyebrow: "Sellers", title: "Thinking of selling?", items: sell, cta: "Get Your Free Home Valuation", to: "/contact" as const },
           ].map((p) => (
-            <div key={p.title} className="bg-ivory p-8 md:p-14">
+            <div key={p.title} className="bg-ivory px-5 py-10 sm:p-8 md:p-14">
               <p className="eyebrow">{p.eyebrow}</p>
               <h2 className="mt-4 text-4xl md:text-5xl">{p.title}</h2>
               <ul className="mt-8 space-y-3">

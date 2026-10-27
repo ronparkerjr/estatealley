@@ -19,9 +19,9 @@ export function Footer() {
           <p className="eyebrow !text-champagne">Explore</p>
           <ul className="mt-5 space-y-3 text-sm">
             {NAV.map((n) => (
-              <li key={n.to}><Link to={n.to} className="link-underline text-on-dark-muted hover:text-on-dark">{n.label}</Link></li>
+              <li key={n.to}><Link to={n.to} className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">{n.label}</Link></li>
             ))}
-            <li><Link to="/areas" className="link-underline text-on-dark-muted hover:text-on-dark">Communities We Serve</Link></li>
+            <li><Link to="/areas" className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">Communities We Serve</Link></li>
           </ul>
         </nav>
 

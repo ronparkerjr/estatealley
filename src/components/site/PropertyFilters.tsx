@@ -16,7 +16,7 @@ export function usePropertyFilters(items: Property[]) {
   const types = useMemo(() => [...new Set(items.map((p) => p.type))].sort(), [items]);
   const locations = useMemo(() => [...new Set(items.map((p) => p.location).filter(Boolean) as string[])].sort(), [items]);
   const results = useMemo(() => {
-    const [lo, hi] = f.price ? f.price.split("-").map(Number) : [0, Infinity];
+    const [lo = 0, hi = Infinity] = f.price ? f.price.split("-").map(Number) : [];
     return items.filter((p) =>
       p.price >= lo && p.price < hi &&
       (!f.beds || p.beds >= +f.beds) &&

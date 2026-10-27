@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import hero from "@/assets/hero-home.jpg";
+import interior from "@/assets/interior-living.jpg";
 import team from "@/assets/john-heather-alley.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { CtaBand, Section } from "@/components/site/Sections";

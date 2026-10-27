@@ -35,7 +35,7 @@ export function Header() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="whitespace-nowrap rounded-full border border-transparent px-2 py-1.5 text-[0.66rem] uppercase tracking-[0.06em] transition-colors hover:border-foreground/30 font-medium text-foreground/80 hover:text-foreground"
+                    className="whitespace-nowrap rounded-full border border-transparent bg-transparent px-2 py-1.5 text-[0.66rem] uppercase tracking-[0.06em] transition-colors hover:border-foreground/30 hover:bg-muted font-medium text-foreground/80 hover:text-foreground"
                     activeOptions={{ exact: item.to === "/" }}
                     activeProps={{ className: "!border-foreground/60 text-foreground" }}
                   >

@@ -37,19 +37,20 @@ const b = (slug: string, title: string, price: number, beds: number, baths: numb
 
 export const LISTINGS: Property[] = [];
 
+// Mirrors https://www.estatealley.com/recently-sold-properties (same order, prices, specs, photos).
 export const SOLD: Property[] = [
-  s("grand-legacy", "Grand Legacy", 2250000, 5, 6, 9855, "ddf363_0abad36e68214eb18479999327276335", "x_147,y_0,w_1206,h_1002"),
-  s("piper-glen", "Piper Glen", 1150000, 5, 7, 4200, "ddf363_be8a29e0e0974f8c9239cef3e4c3715e", "x_150,y_0,w_1200,h_997"),
-  s("winding-river", "Winding River", 1100000, 4, 3, undefined, "ddf363_046c37c3fd8c486b82326d2c5d522995", "x_148,y_0,w_1203,h_1000"),
-  s("liberty-township", "Liberty Township", 705000, 5, 4, 4388, "ddf363_3615d86dd4354d79a9223d4f464f10ee", "x_242,y_0,w_1015,h_843"),
+  s("eden-ridge", "Eden Ridge", 575000, 5, 5, 4115, "ddf363_af37643bba324cd888164d382bb047a2", "x_73,y_0,w_1354,h_1125"),
   // Source lists 12 baths for Little River, likely a typo — omitted until confirmed.
   s("little-river", "Little River", 695000, 4, undefined, 3178, "ddf363_33bc15e8117c4b09bfa9775ab161187c", "x_150,y_0,w_1200,h_997"),
-  s("eden-ridge", "Eden Ridge", 575000, 5, 5, 4115, "ddf363_af37643bba324cd888164d382bb047a2", "x_73,y_0,w_1354,h_1125"),
   s("hermitage", "Hermitage", 539900, 4, 3, 4308, "ddf363_cd4aa1e888204f9fba851ae0d3ac3009", "x_147,y_0,w_1203,h_1000"),
+  s("liberty-township", "Liberty Township", 705000, 5, 4, 4388, "ddf363_3615d86dd4354d79a9223d4f464f10ee", "x_242,y_0,w_1015,h_843"),
+  s("waynes-way", "Waynes Way", 255000, 3, 1, 1076, "ddf363_600c683ebfce466aa7af3e65dd69b82e", "x_150,y_0,w_1200,h_997"),
   s("wittmer", "Wittmer", 461900, 4, 3, 2732, "ddf363_c08d124eca404b73a4a4128357eb7d04", "x_149,y_0,w_1202,h_999"),
   s("springdale", "Springdale", 437000, 3, 3, 2957, "ddf363_e6daa71a9b794e64b9dc9ed01d53dbb1", "x_147,y_0,w_1206,h_1002"),
-  s("waynes-way", "Waynes Way", 255000, 3, 1, 1076, "ddf363_600c683ebfce466aa7af3e65dd69b82e", "x_150,y_0,w_1200,h_997"),
+  s("piper-glen", "Piper Glen", 1150000, 5, 7, 4200, "ddf363_be8a29e0e0974f8c9239cef3e4c3715e", "x_150,y_0,w_1200,h_997"),
+  s("grand-legacy", "Grand Legacy", 2250000, 5, 6, 9855, "ddf363_0abad36e68214eb18479999327276335", "x_147,y_0,w_1206,h_1002"),
   { ...s("vine", "Vine", 240000, 1, 1, 826, "ddf363_23194b2318cf497c9c680b906ff44f83", "x_149,y_0,w_1202,h_999"), type: "Condo" },
+  s("winding-river", "Winding River", 1100000, 4, 3, 3110, "ddf363_046c37c3fd8c486b82326d2c5d522995", "x_148,y_0,w_1203,h_1000"),
 ];
 
 export const BUYER: Property[] = [

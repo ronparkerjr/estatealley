@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import logo from "@/assets/eag-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { NAV, SITE } from "@/lib/site";
+import { scrollToTopIfCurrent } from "@/lib/scroll-to-top";
 import { SocialLinks } from "./SocialLinks";
 
 export function Footer() {

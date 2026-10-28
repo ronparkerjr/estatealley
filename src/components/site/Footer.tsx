@@ -29,11 +29,11 @@ export function Footer() {
           <p className="eyebrow !text-champagne">Explore</p>
           <ul className="mt-5 space-y-3 text-sm">
             {NAV.map((n) => (
-              <li key={n.to}><Link to={n.to} className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">{n.label}</Link></li>
+              <li key={n.to}><Link to={n.to} onClick={() => scrollToTopIfCurrent(n.to)} className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">{n.label}</Link></li>
             ))}
-            <li><Link to="/areas" className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">Communities We Serve</Link></li>
-            <li><Link to="/resources/first-time-homebuyers" className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">First-Time Homebuyers</Link></li>
-            <li><Link to="/renovations" className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">Renovations</Link></li>
+            <li><Link to="/areas" onClick={() => scrollToTopIfCurrent("/areas")} className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">Communities We Serve</Link></li>
+            <li><Link to="/resources/first-time-homebuyers" onClick={() => scrollToTopIfCurrent("/resources/first-time-homebuyers")} className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">First-Time Homebuyers</Link></li>
+            <li><Link to="/renovations" onClick={() => scrollToTopIfCurrent("/renovations")} className="link-underline inline-block py-1.5 text-on-dark-muted hover:text-on-dark">Renovations</Link></li>
           </ul>
         </nav>
 
@@ -54,8 +54,8 @@ export function Footer() {
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-on-dark-muted md:flex-row md:justify-between">
           <p>© {new Date().getFullYear()} {SITE.name}. Affiliated with {SITE.brokerage}. Each office independently owned and operated.</p>
           <p className="flex flex-wrap gap-x-4 gap-y-1">
-            <Link to="/privacy" className="link-underline hover:text-on-dark">Privacy Policy</Link>
-            <Link to="/terms" className="link-underline hover:text-on-dark">Terms of Use</Link>
+            <Link to="/privacy" onClick={() => scrollToTopIfCurrent("/privacy")} className="link-underline hover:text-on-dark">Privacy Policy</Link>
+            <Link to="/terms" onClick={() => scrollToTopIfCurrent("/terms")} className="link-underline hover:text-on-dark">Terms of Use</Link>
             <span>Equal Housing Opportunity</span>
           </p>
         </div>
